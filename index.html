@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Oferta Especial — Lista de Compras</title>
+<meta name="description" content="Listas de compras semanais já organizadas e prontas. Oferta especial por apenas R$8,90.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ───────────────────────────────────────────────────────────
+   Tokens — identidade Upsell 1 (laranja + verde + branco)
+   Ver brand-spec.md para a fonte e a postura de layout.
+   ─────────────────────────────────────────────────────────── */
+:root {
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --fg: #232b33;
+  --fg-2: #3a4450;
+  --muted: #5c6670;
+  --meta: #8a929b;
+  --border: #edece9;
+  --accent: #f4781f;        /* laranja — badge, seal */
+  --accent-deep: #dd6a10;
+  --green: #28a745;         /* verde — CTA, preço novo */
+  --green-hover: #1f8338;
+  --green-active: #176a2e;
+  --danger: #d90429;        /* vermelho chamativo — barra de alerta */
+  --danger-deep: #b40321;
+  --beige: #fff4e3;         /* fundo do seal */
+  --font: "Nunito", -apple-system, system-ui, sans-serif;
+
+  --radius-img: 22px;
+  --radius-badge: 999px;
+  --radius-cta: 18px;
+  --shadow-img: 0 18px 40px rgba(35, 43, 51, 0.16), 0 4px 12px rgba(35, 43, 51, 0.08);
+  --shadow-badge: 0 4px 10px rgba(221, 106, 16, 0.4);
+  --shadow-cta: 0 10px 24px rgba(40, 167, 69, 0.35);
+
+  --space-1: 4px;  --space-2: 8px;  --space-3: 12px;
+  --space-4: 16px; --space-5: 20px; --space-6: 24px;
+  --space-8: 32px; --space-10: 40px; --space-12: 48px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--fg);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ── 1. Barra de alerta (fixa no topo) ─────────────────── */
+.alert-bar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px var(--space-4);
+  background-color: var(--danger);
+  color: #fff;
+  text-align: center;
+  animation: alert-blink 1.3s ease-in-out infinite;
+}
+@keyframes alert-blink {
+  0%, 100% {
+    background-color: var(--danger-deep);
+    box-shadow: 0 2px 12px rgba(217, 4, 41, 0.55);
+  }
+  50% {
+    background-color: #ff2b4a;
+    box-shadow: 0 2px 26px rgba(255, 43, 74, 0.95);
+  }
+}
+.alert-bar__icon {
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+}
+.alert-bar__text {
+  margin: 0;
+  font-size: clamp(12px, 3.4vw, 14px);
+  font-weight: 900;
+  line-height: 1.3;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+/* ── Conteúdo ──────────────────────────────────────────── */
+.page {
+  max-width: 460px;
+  margin: 0 auto;
+  padding: clamp(28px, 7vw, 48px) var(--space-4) clamp(32px, 8vw, 48px);
+  text-align: center;
+}
+
+/* ── 2. Headline ───────────────────────────────────────── */
+.headline {
+  margin: 0 0 var(--space-3);
+  font-size: clamp(32px, 8.5vw, 46px);
+  font-weight: 900;
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+  text-wrap: balance;
+}
+.headline .hl {
+  color: var(--accent);
+  background: linear-gradient(transparent 66%, color-mix(in srgb, var(--accent) 22%, transparent) 66%);
+  padding: 0 3px;
+}
+
+/* ── 3. Subheadline ────────────────────────────────────── */
+.subheadline {
+  margin: 0 auto var(--space-8);
+  max-width: 380px;
+  font-size: clamp(15px, 4.2vw, 17px);
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--fg-2);
+  text-wrap: pretty;
+}
+
+/* ── 4. Imagem do produto + badge ──────────────────────── */
+.product {
+  position: relative;
+  max-width: 400px;
+  margin: 0 auto var(--space-8);
+}
+.product__media {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-img);
+  box-shadow: var(--shadow-img);
+  background: #eef1f0;
+}
+.product__badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: var(--radius-badge);
+  box-shadow: var(--shadow-badge);
+  transform: rotate(3deg);
+}
+
+/* ── 5. Bloco de preço ─────────────────────────────────── */
+.price {
+  margin-bottom: var(--space-8);
+}
+.price__old {
+  margin: 0 0 var(--space-1);
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--meta);
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+}
+.price__new {
+  margin: 0 0 var(--space-3);
+  font-size: clamp(40px, 11vw, 52px);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--green);
+}
+.price__new small {
+  display: block;
+  margin-bottom: 4px;
+  font-size: clamp(16px, 4.4vw, 19px);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+}
+.price__seal {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  background: var(--beige);
+  color: var(--accent);
+  font-size: 15px;
+  font-weight: 800;
+  border-radius: var(--radius-badge);
+}
+.price__seal svg { flex: 0 0 auto; color: var(--accent); }
+
+/* ── 6. CTA ────────────────────────────────────────────── */
+.cta {
+  display: block;
+  width: 100%;
+  padding: 19px 24px;
+  border: 1px solid #fff;
+  border-radius: var(--radius-cta);
+  background: linear-gradient(var(--fill), var(--fill)) padding-box,
+    linear-gradient(#fff, #fff) border-box;
+  background-origin: padding-box, border-box;
+  color: #fff;
+  font-family: var(--font);
+  font-size: clamp(18px, 4.8vw, 21px);
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  cursor: pointer;
+  box-shadow: var(--shadow-cta);
+  transition: background 150ms ease, transform 150ms ease, box-shadow 150ms ease;
+  animation: cta-pulse 1.6s ease-in-out infinite, cta-bright 1.6s ease-in-out infinite;
+  -webkit-tap-highlight-color: transparent;
+}
+.cta { --fill: var(--green); }
+.cta:hover, .cta:focus-visible { --fill: var(--green-hover); }
+.cta:active { --fill: var(--green-active); transform: scale(0.985); box-shadow: 0 6px 16px rgba(40, 167, 69, 0.3); }
+.cta:focus-visible { outline: 3px solid color-mix(in oklab, var(--green) 45%, transparent); outline-offset: 2px; }
+
+/* Pulsar — o botão acende e apaga no lugar, sem anel, sem sonar */
+@keyframes cta-pulse {
+  0%, 100% { box-shadow: 0 8px 20px rgba(40, 167, 69, 0.28); }
+  50% { box-shadow: 0 8px 36px rgba(40, 167, 69, 0.8); }
+}
+@keyframes cta-bright {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.14); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta, .alert-bar { animation: none; }
+  * { transition-duration: 0.01ms !important; }
+}
+
+.cta-note {
+  margin: 12px 0 0;
+  font-size: 13px;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--meta);
+}
+
+/* ── 7. Rodapé de confiança ────────────────────────────── */
+.trust {
+  margin-top: var(--space-8);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--border);
+}
+.trust p {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+/* Responsivo — coluna única em todas as telas */
+@media (min-width: 768px) {
+  .page { max-width: 520px; }
+  .product { max-width: 440px; }
+  .product__badge { font-size: 13px; padding: 9px 16px; }
+}
+@media (min-width: 1920px) {
+  .page { max-width: 560px; }
+}
+</style>
+</head>
+<body>
+
+<!-- 1. Barra de alerta -->
+<header class="alert-bar" data-od-id="alert-bar">
+  <svg class="alert-bar__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="M12 2.2 1.8 21h20.4L12 2.2Z" fill="#ffc107" stroke="#7a4f00" stroke-width="1.4" stroke-linejoin="round"/>
+    <path d="M12 8.8v5.6" stroke="#3a2400" stroke-width="2.4" stroke-linecap="round"/>
+    <circle cx="12" cy="17.3" r="1.5" fill="#3a2400"/>
+  </svg>
+  <p class="alert-bar__text">Não pule esta página! Para não perder esta oferta especial</p>
+</header>
+
+<main class="page">
+
+  <!-- 2. Headline -->
+  <h1 class="headline" data-od-id="headline">Tenha <span class="hl" data-od-id="headline-highlight">tudo</span> o que precisa para preparar as receitas</h1>
+
+  <!-- 3. Subheadline -->
+  <h2 class="subheadline" data-od-id="subheadline">Seu Cardápio de 30 Dias está pronto. Agora garanta a lista de compras dele, semana a semana, sem adivinhação no mercado.</h2>
+
+  <!-- 4. Imagem do produto + badge -->
+  <figure class="product" data-od-id="product">
+    <img class="product__media" src="msusnkc4-image.png" alt="Lista de compras semanal organizada e pronta para as receitas" loading="eager">
+    <figcaption class="product__badge" data-od-id="offer-badge">Oferta especial</figcaption>
+  </figure>
+
+  <!-- 5. Bloco de preço -->
+  <section class="price" data-od-id="price-block" aria-label="Preço da oferta">
+    <p class="price__old" data-od-id="old-price">De R$29,90</p>
+    <p class="price__new" data-od-id="new-price">
+      <small>Por</small>R$8,90
+    </p>
+    <p class="price__seal" data-od-id="save-seal">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 4v12m0-12L7 11m5 5 5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Economize 70% hoje
+    </p>
+  </section>
+
+  <!-- 6. CTA (sem link configurado) -->
+  <section class="action" data-od-id="action">
+    <button class="cta" type="button" data-od-id="cta-button">Quero garantir por R$8,90 →</button>
+    <p class="cta-note" data-od-id="wait-note">⏳ Aguardando link do checkout</p>
+  </section>
+
+  <!-- 7. Rodapé de confiança -->
+  <footer class="trust" data-od-id="trust-footer">
+    <p>Pagamento único · Acesso imediato</p>
+  </footer>
+
+</main>
+
+</body>
+</html>

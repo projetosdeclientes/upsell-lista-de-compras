@@ -1,0 +1,11 @@
+{
+  "kind": "critique-panel",
+  "score": 4,
+  "axes": {
+    "clarity": { "score": 5, "notes": "Estrutura segue exatamente a ordem do briefing: alerta, headline, subheadline, produto, preço, CTA, rodapé. Sem menu, sem seções extras." },
+    "hierarchy": { "score": 5, "notes": "Um único foco por tela: o olho pousa no preço verde e desce para o CTA. CTA grande, com pulse sutil." },
+    "typography": { "score": 4, "notes": "Nunito 600–900, arredondada e bold conforme identidade Upsell 1. Escala fluida via clamp()." },
+    "motion": { "score": 4, "notes": "Flourish único: 'breathe' no CTA com prefers-reduced-motion respeitado. Nada mais animado." },
+    "brand": { "score": 4, "notes": "Laranja (badge + seal), verde (CTA + preço), vermelho (alerta), selo bege. Identidade consistente com UpSell 1." }
+  }
+}
