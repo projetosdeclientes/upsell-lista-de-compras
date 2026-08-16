@@ -163,46 +163,7 @@ body {
   transform: rotate(3deg);
 }
 
-/* ── 5. Bloco de preço ─────────────────────────────────── */
-.price {
-  margin-bottom: var(--space-8);
-}
-.price__old {
-  margin: 0 0 var(--space-1);
-  font-size: 19px;
-  font-weight: 700;
-  color: var(--meta);
-  text-decoration: line-through;
-  text-decoration-thickness: 2px;
-}
-.price__new {
-  margin: 0 0 var(--space-3);
-  font-size: clamp(40px, 11vw, 52px);
-  font-weight: 900;
-  line-height: 1;
-  letter-spacing: -0.02em;
-  color: var(--green);
-}
-.price__new small {
-  display: block;
-  margin-bottom: 4px;
-  font-size: clamp(16px, 4.4vw, 19px);
-  font-weight: 800;
-  letter-spacing: -0.01em;
-  color: var(--fg);
-}
-.price__seal {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 9px 18px;
-  background: var(--beige);
-  color: var(--accent);
-  font-size: 15px;
-  font-weight: 800;
-  border-radius: var(--radius-badge);
-}
-.price__seal svg { flex: 0 0 auto; color: var(--accent); }
+/* ── 5. Preço (removido — nenhum preço é exibido) ─────── */
 
 /* ── 6. CTA ────────────────────────────────────────────── */
 .cta {
@@ -304,23 +265,9 @@ body {
     <figcaption class="product__badge" data-od-id="offer-badge">Oferta especial</figcaption>
   </figure>
 
-  <!-- 5. Bloco de preço -->
-  <section class="price" data-od-id="price-block" aria-label="Preço da oferta">
-    <p class="price__old" data-od-id="old-price">De R$29,90</p>
-    <p class="price__new" data-od-id="new-price">
-      <small>Por</small>R$8,90
-    </p>
-    <p class="price__seal" data-od-id="save-seal">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M12 4v12m0-12L7 11m5 5 5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      Economize 70% hoje
-    </p>
-  </section>
-
   <!-- 6. CTA (sem link configurado) -->
   <section class="action" data-od-id="action">
-    <button class="cta" type="button" data-od-id="cta-button">Quero garantir por R$8,90 →</button>
+    <button class="cta" type="button" data-od-id="cta-button">Quero garantir →</button>
     <p class="cta-note" data-od-id="wait-note">⏳ Aguardando link do checkout</p>
   </section>
 
