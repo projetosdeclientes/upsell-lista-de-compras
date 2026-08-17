@@ -104,7 +104,7 @@ body {
 .page {
   max-width: 460px;
   margin: 0 auto;
-  padding: clamp(28px, 7vw, 48px) var(--space-4) clamp(32px, 8vw, 48px);
+  padding: clamp(20px, 5vw, 40px) var(--space-4) clamp(28px, 7vw, 48px);
   text-align: center;
 }
 
@@ -126,11 +126,11 @@ body {
 
 /* ── 3. Subheadline ────────────────────────────────────── */
 .subheadline {
-  margin: 0 auto var(--space-8);
+  margin: 0 auto var(--space-6);
   max-width: 380px;
   font-size: clamp(15px, 4.2vw, 17px);
   font-weight: 700;
-  line-height: 1.5;
+  line-height: 1.45;
   color: var(--fg-2);
   text-wrap: pretty;
 }
@@ -138,8 +138,8 @@ body {
 /* ── 4. Imagem do produto + badge ──────────────────────── */
 .product {
   position: relative;
-  max-width: 400px;
-  margin: 0 auto var(--space-8);
+  max-width: clamp(250px, 68vw, 380px);
+  margin: 0 auto var(--space-6);
 }
 .product__media {
   width: 100%;
@@ -215,7 +215,7 @@ body {
 
 /* ── 7. Rodapé de confiança ────────────────────────────── */
 .trust {
-  margin-top: var(--space-8);
+  margin-top: var(--space-6);
   padding-top: var(--space-5);
   border-top: 1px solid var(--border);
 }
@@ -229,7 +229,7 @@ body {
 /* Responsivo — coluna única em todas as telas */
 @media (min-width: 768px) {
   .page { max-width: 520px; }
-  .product { max-width: 440px; }
+  .product { max-width: 400px; }
   .product__badge { font-size: 13px; padding: 9px 16px; }
 }
 @media (min-width: 1920px) {
