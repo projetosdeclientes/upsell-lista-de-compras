@@ -181,6 +181,7 @@ body {
   font-weight: 900;
   letter-spacing: 0.01em;
   line-height: 1.2;
+  text-decoration: none;
   cursor: pointer;
   box-shadow: var(--shadow-cta);
   transition: background 150ms ease, transform 150ms ease, box-shadow 150ms ease;
@@ -205,14 +206,6 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .cta, .alert-bar { animation: none; }
   * { transition-duration: 0.01ms !important; }
-}
-
-.cta-note {
-  margin: 12px 0 0;
-  font-size: 13px;
-  font-weight: 600;
-  font-style: italic;
-  color: var(--meta);
 }
 
 /* ── 7. Rodapé de confiança ────────────────────────────── */
@@ -265,10 +258,9 @@ body {
     <figcaption class="product__badge" data-od-id="offer-badge">Oferta especial</figcaption>
   </figure>
 
-  <!-- 6. CTA (sem link configurado) -->
+  <!-- 6. CTA (link de checkout configurado) -->
   <section class="action" data-od-id="action">
-    <button class="cta" type="button" data-od-id="cta-button">Quero garantir →</button>
-    <p class="cta-note" data-od-id="wait-note">⏳ Aguardando link do checkout</p>
+    <a class="cta" href="https://pay.cakto.com.br/3fzwgt7_1045680" data-od-id="cta-button">Quero garantir →</a>
   </section>
 
   <!-- 7. Rodapé de confiança -->
